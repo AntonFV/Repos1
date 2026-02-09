@@ -1,7 +1,6 @@
 import os
 if not os.path.exists('newPythonTask'):
     (os.mkdir('newPythonTask'))
-
 class Person:
     def __init__(self, name):
         self.name = name
@@ -19,8 +18,8 @@ class librarian(Person):
         self.role=role
     def Lists(self):
         for i in library:
-            print(library[i])
-            print(Book.getStatus())
+            print(i.title, i.author, i.getStatus())
+            
 
 class Book:
     def __init__(self, title, author, status):
@@ -96,7 +95,7 @@ if (role =="Библиотекарь"):
     print("С возвращением", name)
     counter=0
     while(counter<1):
-        print("Что будете делать?")
+        print("Что будете делать?\n 1.Добавить книгу\n 2.Удалить книгу \n 3.Добавить пользователя \n 4.Посмотреть список пользователей \n 5.Посмотреть список книг \n 0.Выход")
         variantLib = int(input())
 
         if (variantLib ==1):
@@ -117,20 +116,20 @@ if (role =="Библиотекарь"):
             name = str(input())
             role = str(input())
             adress=str(input())
-            theNewPerson = Person(name,role,adress) 
+            theNewPerson = User(name,role,adress) 
             persons.append(theNewPerson)
 
         if(variantLib ==4):
             print(persons)
         if(variantLib==5):
-            print(librarian.Lists())
+            print(librarian.Lists(0))
         if(variantLib==0):
             counter = 1
 elif(role=="Гость"):
     print("Добро пожаловать!", name)
     counter=0
     while(counter<1):
-        print("Выберите действие:")
+        print("Выберите действие: \n 1.Посмотреть список книг \n 2.Взять книгу \n 3.Вернуть книгу \n 4.Посмотреть список взятых книг \n 5.Изменить адрес \n 6.Выход")
         variantUser = int(input())
 
         if (variantUser ==1):
@@ -171,13 +170,31 @@ elif(role=="Гость"):
             counter=1
 filepath ='newPythonTask/thefirstfile.txt'
 with open(filepath,'w', encoding='utf-8') as file:
-    libraryS = ' '.join(library)
-    file.write(libraryS)
+        libraryS = ''.join(library[0])
+        file.write(libraryS)
+with open(filepath,'a', encoding='utf-8') as file:
+         o=1
+         while(o<library.len):
+            libraryS=' '.join(library[o])
+            o=o+1
+         file.write(libraryS)
 filepath ='newPythonTask/thesecondfile.txt'
 with open(filepath,'w', encoding='utf-8') as file:
-    booksS = ' '.join(books)
+    booksS = ''.join(books[0])
     file.write(booksS)
+with open(filepath,'a', encoding='utf-8') as file:
+         o=1
+         while(o<books.len):
+            booksS=' '.join(books[o])
+            o=o+1
+         file.write(libraryS)
 filepath ='newPythonTask/thethirdfile.txt'
 with open(filepath,'w', encoding='utf-8') as file:
-    personsS = ' '.join(persons)
+    personsS = ''.join(persons[0])
     file.write(personsS)
+with open(filepath,'a', encoding='utf-8') as file:
+         o=1
+         while(o<persons.len):
+            booksS=' '.join(persons[o])
+            o=o+1
+         file.write(personsS)
