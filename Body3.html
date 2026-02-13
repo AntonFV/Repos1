@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+
+const users = [
+{ id: 1, name: "Anna", age: 22, city: "Moscow", isActive: true },
+{ id: 2, name: "Oleg", age: 17, city: "Kazan", isActive: false },
+{ id: 3, name: "Ivan", age: 30, city: "Moscow", isActive: true },
+{ id: 4, name: "Maria", age: 25, city: "Sochi", isActive: false }
+];
+
+function getActiveUsers(Array1){
+    const results = Array1.filter(obj => obj.isActive);
+    console.log(results);
+}
+function  getUserNames(Array1){
+    const names = Array1.map(u => u.name); 
+    console.log(names);
+}
+function findUserById(Array1,i){
+    i=i-1;
+    console.log(Array1[i])
+}
+function getUsersStatistics(Array1){
+let total = Array1.length;
+    let active = 0;
+    let inactive = 0;
+    
+    for (let user of Array1) {
+        if (user.isActive === true) {
+            active++;
+        } else {
+            inactive++;
+        }
+    }
+
+    return {
+        total: total,
+        active: active,
+        inactive: inactive
+    };
+}
+
+function getAverageAge(Array1){
+        let t=0;
+        let u=0;
+        while(t<Array1.length){
+            u=u+Array1[t].age
+        }
+        u=u/Array1.length;
+        console.log(u);
+        
+       
+        }
+
+function groupUsersByCity(Array1){
+    let y;
+        const names = Array1.map(u => u.name); 
+        const cities = Array1.map(u => u.city); 
+    let o;
+    let arr = {};
+    for(let r;r<Array1.length;r++){
+        y=names[r];
+        o=cities[r];
+        arr.set(y,o)
+    }
+    console.log(arr);
+}
+console.log(getActiveUsers(users));
+console.log(getUserNames(users));
+console.log(findUserById(users,1));
+console.log(getUsersStatistics(users));
+console.log(getAverageAge(users));
+console.log(groupUsersByCity(users));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
