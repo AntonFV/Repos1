@@ -98,6 +98,8 @@ if (role =="Библиотекарь"):
 elif(role=="Гость"):
     print("Добро пожаловать!", name)
     counter=0
+    per = Person(name, "Гость")
+    persons.append(per)
     while(counter<1):
         print("Выберите действие: \n 1.Посмотреть список книг \n 2.Взять книгу \n 3.Вернуть книгу \n 4.Посмотреть список взятых книг \n 6.Выход")
         variantUser = int(input())
