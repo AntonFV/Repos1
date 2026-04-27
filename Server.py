@@ -9,8 +9,6 @@ def start():
     server_socket.bind(('127.0.0.1', 5001))
     server_socket.listen()
     print('Сервер запущен и ждёт клиента')
-    while True:
-        client_socket, client_address = server_socket.accept()
         client_thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
         with clients_lock:
             clients.append(client_socket)
