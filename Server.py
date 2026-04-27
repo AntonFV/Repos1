@@ -32,7 +32,7 @@ def handle_client(client_socket, client_address):
             break
         message = data.decode('utf-8')
         print(f'От {client_address} пришло:', message)
-
+        client_socket.send(message.encode('utf-8'))
         with clients_lock:
             if client_socket in clients:
                 clients.remove(client_socket)
