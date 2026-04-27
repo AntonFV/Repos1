@@ -12,6 +12,8 @@ def start():
     while True:
         client_socket, client_address = server_socket.accept()
         client_thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
+        with clients_lock:
+            clients.append(client_socket)
         client_thread.start()
         print('Подключился клиент:', client_address)
         while True:
