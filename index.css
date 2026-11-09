@@ -53,6 +53,12 @@ body {
 
 }
 
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+  padding: 20px;
+}
 #root {
   width: 1126px;
   max-width: 100%;
@@ -109,13 +115,12 @@ code {
   background: var(--code-bg);
 }
 
-/* 👇 Карточка */
+
 .item1 {
-  width: 40vw;
+  width: 100%;
   min-height: 15vw;
   padding: 16px;
   box-sizing: border-box;
-  background-color: #3a4269;
   border: 5px solid #3bffba;
   border-radius: 15px;
   display: flex;
@@ -125,7 +130,7 @@ code {
   gap: 8px;
 }
 
-/* 👇 Главное исправление — картинка вписывается в карточку */
+
 .item1 img {
   max-width: 100%;
   max-height: 120px;
