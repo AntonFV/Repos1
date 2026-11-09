@@ -107,8 +107,12 @@ function Sale(props) {
   return (
     <div className="item1" style={cardStyles}>
       <h1 style={{ color: theme === "dark" ? "#fff" : "#08060d" }}>{props.name}</h1>
-      
-      <b className="title1" style={{ color: theme === "dark" ? "#c084fc" : "#3a4269" }}>
+{props.image && (
+        <img 
+          src={props.image} 
+          style={{ maxWidth: "100%", maxHeight: "120px", objectFit: "contain", marginBottom: "10px", borderRadius: "8px" }} 
+        />
+      )}      <b className="title1" style={{ color: theme === "dark" ? "#c084fc" : "#3a4269" }}>
         Цена: {props.cost}
       </b>
       
@@ -163,12 +167,12 @@ function Home() {
   const { cart, dispatch } = useContext(CartContext);
   const navigate = useNavigate();
   const products = [
-    { name: "Хлеб", cost: "65" },
-    { name: "Молоко", cost: "90" },
-    { name: "Чай", cost: "400" },
-    { name: "Колбаса", cost: "150" },
-    { name: "Масло", cost: "120" },
-    { name: "Творог", cost: "140" },
+    { name: "Хлеб", cost: "65", image:"https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" },
+    { name: "Молоко", cost: "90", image:"https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" },
+    { name: "Чай", cost: "400", image:"https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" },
+    { name: "Колбаса", cost: "150", image:"https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" },
+    { name: "Масло", cost: "120", image:"https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" },
+    { name: "Творог", cost: "140", image:"https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg" },
   ];
  const addAndGoToCart = (product) => {
     dispatch({ type: "add", payload: product }); 
@@ -183,6 +187,7 @@ function Home() {
             <Sale 
               name={product.name} 
               cost={product.cost} 
+              image={product.image}
             />
           </div>
         ))}
